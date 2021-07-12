@@ -1,4 +1,4 @@
-<h2>Add a new post!</h2>
+<h2>Add a new post!</h2><br>
 
 <%= form_for :post, url: posts_path do |form| %>
   <% if @post.errors.any? %>
@@ -7,17 +7,22 @@
     <% end %>
   <% end %>
 
-  <p>
+  <h5>
+    Author<br>
+    <%= form.text_field :author, :class => 'form-control', placeholder: "What's your name?" %><br>
+  </h5>
+
+  <h5>
     Title<br>
-    <%= form.text_field :title, :class => 'form-control' %>
-  </p>
+    <%= form.text_field :title, :class => 'form-control', placeholder: "How you'd like to name your post?" %><br>
+  </h5>
 
-  <p>
+  <h5>
     Body<br>
-    <%= form.text_area :body, :class => 'form-control' %>
-  </p>
+    <%= form.text_area :body, :class => 'form-control', placeholder: "Body of your post" %><br>
+  </h5>
 
-  <p>
-  <%= form.submit :class => 'btn btn-success' %>
-  </p>
+  <h5>
+  <%= form.submit :class => 'btn btn-success' %><br>
+  </h5>
 <% end %>

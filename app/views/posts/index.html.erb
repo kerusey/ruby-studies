@@ -15,40 +15,40 @@
 
   <% counter, number_of_tables, updatable = 0, 0, false %>
   <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-  <% @posts.each do |post| %>
+    <% @posts.each do |post| %>
       <% if updatable %>
-      <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+        <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
           <% updatable = false %>
       <% end %>
 
-    <% if counter != 3 %>
+      <% if counter != 3 %>
 
-      <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-        <div class="my-3 py-3">
-          <h2 class="display-5"><%= post.title %></h2>
-        </div>
-        <div class="bg-light shadow-sm mx-auto" style="width: 400px; height: 500px; border-radius: 21px 21px 21px 21px;">
+        <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+          <div class="my-3 py-3">
+            <h2 class="display-5"><%= post.author + " wrote " + post.title %></h2>
+          </div>
+          <div class="bg-light shadow-sm mx-auto" style="width: 400px; height: 500px; border-radius: 21px 21px 21px 21px;">
           <span style="color: black; ">
-            <% if post.body.length > 100 %>
-              <p class="lead"><%= post.body[..600] + "..." %></p>
-              <%= link_to "Read further", post_path(post), :class => 'btn-btn-outline-primary' %>
+            <% if post.body.length > 420 %>
+              <p class="lead"><%= post.body[..420] + "..." %></p>
+              <%= link_to "Continue reading", post_path(post), :class => 'btn-btn-outline-primary' %>
             <% end %>
           </span>
+          </div>
         </div>
-      </div>
 
-    <% end %>
+      <% end %>
       <% counter += 1 %>
-    <% if counter == 3 %>
-      <% counter, number_of_tables, updatable = 0, number_of_tables + 1, true %>
-      </div>
-    <% end %>
+      <% if counter == 3 %>
+        <% counter, number_of_tables, updatable = 0, number_of_tables + 1, true %>
+        </div>
+      <% end %>
 
       <% if number_of_tables * 3 + counter == @posts.length %>
         </div>
       <% end %>
 
-  <% end %>
+    <% end %>
 
     </main>
 
